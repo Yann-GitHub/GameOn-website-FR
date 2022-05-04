@@ -14,6 +14,7 @@ function editNav() {
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
+const modalBtnCross = document.querySelector(".close"); // Récupère l'icone permettant la fermeture de la modale
 
 // launch modal event
 // ajoute un event listener sur les 2 bouttons de la hero section (boutton visible en fonction de la résolution - media query)
@@ -27,4 +28,11 @@ function launchModal() {
   modalbg.style.display = "block";
 }
 
+// close modal form
+// ajout d'un event listener sur la croix qui permet la fermeture de la modale
+// au click la fonction callback est appelée et permet de fermer la modal en changant son display 'block' en display 'none'
+modalBtnCross.addEventListener("click", closeModal);
+function closeModal() {
+  modalbg.style.display = 'none';
+}
 
