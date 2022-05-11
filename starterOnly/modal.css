@@ -15,7 +15,7 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
-  background-image: url("background.png");
+  /*background-image: url("background.png");*/
   font-family: var(--font-default);
   font-size: 18px;
   max-width: 1300px;
@@ -210,6 +210,8 @@ input {
   font-size: 20px;
   height: 48px;
 }
+
+
 .formData[data-error]::after {
   content: attr(data-error);
   font-size: 0.4em;
@@ -234,6 +236,8 @@ input[data-error]::after {
     font-size: 0.4em;
     color: red;
 } */
+
+/* Donne du style aux labels des sections input-radio et input-checkbox */
 .checkbox-label,
 .checkbox2-label {
   position: relative;
@@ -241,6 +245,8 @@ input[data-error]::after {
   font-size: 12px;
   font-weight: normal;
 }
+
+/* Donne du style aux nouveaux input(checkbox et radio) créés via une balise span */
 .checkbox-label .checkbox-icon,
 .checkbox2-label .checkbox-icon {
   display: block;
@@ -255,6 +261,8 @@ input[data-error]::after {
   top: -1px;
   transition: 0.3s;
 }
+
+/* Donne du style aux nouveaux éléments input(radio et checkbox) lorsqu'ils sont cochés */
 .checkbox-label .checkbox-icon::after,
 .checkbox2-label .checkbox-icon::after {
   content: "";
@@ -271,21 +279,31 @@ input[data-error]::after {
   transition: 0.3s;
   opacity: 0;
 }
+
+/* Désactive les checkbox proposées par defaut */
 .checkbox-input {
   display: none;
 }
+
+/* Rend visible l'element 'checkbox-icon::after' lorsque l'input(radio checkbox) est 'checked'(pseudoclass) */
 .checkbox-input:checked + .checkbox-label .checkbox-icon::after,
 .checkbox-input:checked + .checkbox2-label .checkbox-icon::after {
   opacity: 1;
 }
+
+/* Précise la couleur du background de l'input checkbox (uniquement) lorsque l'élément est coché */
 .checkbox-input:checked + .checkbox2-label .checkbox-icon {
   background: #279e7a;
 }
+
+/* Donne du style aux icones checkbox (uniquement) dans leurs états non coché */
 .checkbox2-label .checkbox-icon {
   border-radius: 4px;
   border: 0;
   background: #c4c4c4;
 }
+
+/* Création de la coche dans les nouveaux checkbox */
 .checkbox2-label .checkbox-icon::after {
   width: 7px;
   height: 4px;
@@ -300,6 +318,7 @@ input[data-error]::after {
 }
 
 /******* Icone croix pour la fermeture de la modal  *******/
+/* Propriétés sur l'élément parent contenant la croix (span) */
 .close {
   position: absolute;
   right: 15px;
@@ -310,6 +329,8 @@ input[data-error]::after {
   cursor: pointer;
   transform: scale(0.7);
 }
+
+/* Pseudos éléments permettant de réaliser la croix */
 .close:before,
 .close:after {
   position: absolute;
@@ -319,6 +340,8 @@ input[data-error]::after {
   width: 3px;
   background-color: #fff;
 }
+
+/* Rotation sur les pseudos éléments pour qu'ils se croisent en formant une croix */
 .close:before {
   transform: rotate(45deg);
 }
@@ -326,7 +349,7 @@ input[data-error]::after {
   transform: rotate(-45deg);
 }
 
-
+/* Donne du style au bouttons de la landing page et du formulaire */
 .btn-submit,
 .btn-signup {
   background: #fe142f;
@@ -339,6 +362,11 @@ input[data-error]::after {
   cursor: pointer;
   border: 0;
 }
+
+
+
+
+/* !!!! Il n'y a pas d'input select dans le formulaire !!!! */
 /* custom select styles */
 .custom-select {
   position: relative;
@@ -410,6 +438,7 @@ input[data-error]::after {
   font-weight: normal;
   font-size: 16px;
 }
+/* !!!! Fin de la section input select inexistant !!!! */
 
 
 /******* Hero Section  ********/
@@ -479,7 +508,7 @@ input[data-error]::after {
 }
 
 
-/*********  Footer sectin  ***********/
+/*********  Footer section  ***********/
 footer {
   padding-left: 2vw;
   padding-right: 2vw;
@@ -495,7 +524,7 @@ footer {
 
 
 
-
+/*********  Modification affichage de la hero section pour les résolutions de 800px et inférieur   ************/
 @media screen and (max-width: 800px) {
   .hero-section {
     display: block;
