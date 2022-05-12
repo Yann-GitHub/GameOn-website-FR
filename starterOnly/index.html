@@ -59,7 +59,7 @@
         <div class="content">
           <span class="close"></span>
           <div class="modal-body">
-            <form name="reserve" action="index.html" method="post" onsubmit="validate();">
+            <form name="reserve" action="index.html" method="get" id="form" onsubmit="validate(event);">
 
               <div class="formData">
                 <label for="first">Prénom</label><br />
@@ -127,7 +127,7 @@
 
               <div class="formData">
                 <input type="checkbox" class="checkbox-input" id="checkbox1" checked />
-                <label for="checkbox1" class="checkbox2-label" required>
+                <label for="checkbox1" class="checkbox2-label" id="checkbox1-label" required>
                   <span class="checkbox-icon"></span>
                   J'ai lu et accepté les conditions d'utilisation.
                 </label><br />
@@ -139,7 +139,7 @@
                 </label><br />
               </div>
 
-              <input type="submit" class="btn-submit button" value="C'est parti" />
+              <input type="submit" class="btn-submit button" id="submitBtn" value="C'est parti" />
 
             </form>
           </div>
