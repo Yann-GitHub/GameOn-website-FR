@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="utf-8" />
     <title>Reservation</title>
@@ -58,7 +58,7 @@
       <div class="bground">
         <div class="content">
           <span class="close"></span>
-          <div class="modal-body">
+          <div class="modal-body" id="modal-body">
             <form name="reserve" action="index.html" method="get" id="form" onsubmit="validate(event);">
 
               <div class="formData">
@@ -142,6 +142,12 @@
               <input type="submit" class="btn-submit button" id="submitBtn" value="C'est parti" />
 
             </form>
+
+            <div id="confirmation-message">
+              <p>Merci ! Votre réservation a été reçue.</p>
+              <button class="btn-submit button" id="btnCloseConfirmation">Fermer</button>
+            </div>
+
           </div>
         </div>
       </div>

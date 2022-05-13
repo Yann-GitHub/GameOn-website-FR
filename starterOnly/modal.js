@@ -12,20 +12,22 @@ function editNav() {
 
 // DOM Elements
 const modalbg = document.querySelector(".bground"); // Selectionne la div parent du formulaire
+const modalBody = document.getElementById('modal-body');
 const modalBtn = document.querySelectorAll(".modal-btn"); // Selectionne les 2 bouttons qui ouvrent la modal
-const form = document.getElementById('form');
-const formData = document.querySelectorAll(".formData"); // Selectionne les différentes sections du formulaire sous forme de ??
+const form = document.getElementById('form'); // Selectionne le formulaire
+const formData = document.querySelectorAll(".formData"); // Selectionne les différentes sections du formulaire sous forme de NodeList
 const modalBtnCross = document.querySelector(".close"); // Selectionne l'icone permettant la fermeture de la modale
 const firstName = document.querySelector("#first"); // Selectionne l'input first name
 const lastName = document.querySelector("#last"); // Selectionne l'input last name
 const mail = document.querySelector("#email"); // Selectionne l'input Email
 const birthdate = document.querySelector("#birthdate"); // Selectionne l'input birthdate
 const quantity = document.querySelector("#quantity"); // Selectionne l'input quantity - Participation tournois
-const radioInputs = document.getElementsByName('location');
-const checkBox1 = document.querySelector("#checkbox1");
-const checkBox1Label = document.querySelector('#checkbox1-label');
+const radioInputs = document.getElementsByName('location'); // Selectionne les inputs radio sous forme de Nodelist
+const checkBox1 = document.querySelector("#checkbox1"); // Selectionne l'input checkbox conditions d'utilisation
+const checkBox1Label = document.querySelector('#checkbox1-label'); // Selectionne le label de la checkbox conditions d'utilisation
 const textControl = document.querySelectorAll(".text-control"); // Selectionne tous les éléments avec la class .text-control
 const submitBtn = document.querySelector("#submitBtn"); // Selectionne le boutton submit du formulaire
+const modalConfirmation = document.querySelector("#confirmation-message");
 
 
 // Regex Variables
@@ -35,14 +37,14 @@ const regexQuantity = /\b([0-9]|[1-9][0-9])\b/;
 
 
 // Validation Variables
-let formValid = false;
-let firstValide = false;
-let lastValide = false;
-let mailValide = false;
-let birthdateValide = false;
-let quantityValide = false;
-let radioValide = false;
-let checkboxValide = false;
+let formValid = false; // Validation globale du formulaire
+let firstValide = false; // Validation de l'input firstName
+let lastValide = false; // Validation de l'input lasttName
+let mailValide = false; // Validation de l'input mail
+let birthdateValide = false; // Validation de l'input birthdate
+let quantityValide = false; // Validation de l'input quantity
+let radioValide = false; // Validation de l'input radio
+let checkboxValide = false; // Validation de l'input checkbox condition d'utilisation
 
 
 // launch modal event
@@ -66,68 +68,62 @@ function closeModal() {
 }
 
 
-
-// Vérification de la validité l'input first(prénom) lors de la saisie
+// Vérification de la validité des inputs directement lors de la saisie grace aux Regex
+// Validité de l'input first(prénom) lors de la saisie
 firstName.addEventListener("input", function(event) {
   event.preventDefault();
   if(regexName.test(event.target.value)) {
     formData[0].setAttribute("data-error-visible", false);
     formData[0].removeAttribute("data-error");
-    return true;
   } else {
     formData[0].setAttribute("data-error-visible", true);
     formData[0].setAttribute("data-error", "Veuillez entrer 2 caractères ou plus pour le champ du prénom.");
     console.log('error input prénom');
-    return false;
   };
 })
 
-// Vérification de la validité de l'input last(nom) lors de la saisie
+// Validité de l'input last(nom) lors de la saisie
 lastName.addEventListener("input", function(event) {
   event.preventDefault();
   if(regexName.test(event.target.value)) {
     formData[1].setAttribute("data-error-visible", false);
     formData[1].removeAttribute("data-error");
-    return true;
   } else {
     formData[1].setAttribute("data-error-visible", true);
     formData[1].setAttribute("data-error", "Veuillez entrer 2 caractères ou plus pour le champ du nom.");
     console.log('error input nom');
-    return false;
   };
 })
 
-// Vérification de la validité de l'input email lors de la saisie
+// Validité de l'input email lors de la saisie
 mail.addEventListener("input", function(event) {
   event.preventDefault();
   if(regexMail.test(event.target.value)) {
     formData[2].setAttribute("data-error-visible", false);
     formData[2].removeAttribute("data-error");
-    return true;
   } else {
     formData[2].setAttribute("data-error-visible", true);
     formData[2].setAttribute("data-error", "Veuillez enter une adresse mail valide.");
     console.log('error input email');
-    return false;
   };
 })
 
-// Vérification de la validité de l'input number(nombre de tournois) lors de la saisie
+// Validité de l'input number(nombre de tournois) lors de la saisie
 quantity.addEventListener("input", function(event) {
   event.preventDefault();
   if(regexQuantity.test(event.target.value)) {
     formData[4].setAttribute("data-error-visible", false);
     formData[4].removeAttribute("data-error");
-    return true;
   } else {
     formData[4].setAttribute("data-error-visible", true);
     formData[4].setAttribute("data-error", "Vous devez entrer un nombre entre 0 et 99.");
     console.log('error input nombre tournois');
-    return false;
   };
 })
 
 
+// Fonction ajouté en Callback de l'eventListener du boutton d'envoi du formulaire
+// Vérifie si l'ensemble des champs obligatoires ont été remplis et de manière correcte
 function checkInputsValidation() {
   if(regexName.test(firstName.value) === false) {
     formData[0].setAttribute("data-error-visible", true);
@@ -137,7 +133,6 @@ function checkInputsValidation() {
     formData[0].setAttribute("data-error-visible", false);
     formData[0].removeAttribute("data-error");
     firstValide = true;
-    //return formValid = false;
   }
   if(regexName.test(lastName.value) === false) {
     formData[1].setAttribute("data-error-visible", true);
@@ -147,7 +142,6 @@ function checkInputsValidation() {
     formData[1].setAttribute("data-error-visible", false);
     formData[1].removeAttribute("data-error");
     lastValide = true;
-    //return formValid = false;
   }
   if(regexMail.test(mail.value) === false) {
     formData[2].setAttribute("data-error-visible", true);
@@ -157,18 +151,15 @@ function checkInputsValidation() {
     formData[2].setAttribute("data-error-visible", false);
     formData[2].removeAttribute("data-error");
     mailValide = true;
-    //return formValid = false;
   }
   if(birthdate.value == "") {
     formData[3].setAttribute("data-error-visible", true);
-    formData[3].setAttribute("data-error", "Veuillez enter une date de naissance valide.");
+    formData[3].setAttribute("data-error", "Vous devez entrer votre date de naissance.");
     console.log('error input birth');
   }else {
     formData[3].setAttribute("data-error-visible", false);
     formData[3].removeAttribute("data-error");
     birthdateValide = true;
-
-    //return formValid = false;
   }
   if(regexQuantity.test(quantity.value) === false) {
     formData[4].setAttribute("data-error-visible", true);
@@ -178,28 +169,25 @@ function checkInputsValidation() {
     formData[4].setAttribute("data-error-visible", false);
     formData[4].removeAttribute("data-error");
     quantityValide = true;
-    //return formValid = false;
   }
   //https://stackoverflow.com/a/51760293
   if(!(radioInputs[0].checked || radioInputs[1].checked || radioInputs[2].checked || radioInputs[3].checked || radioInputs[4].checked || radioInputs[5].checked)) {
     formData[5].setAttribute("data-error-visible", true);
-    formData[5].setAttribute("data-error", "Vous devez selectionner une ville.");
+    formData[5].setAttribute("data-error", "Vous devez choisir une option.");
     console.log('error input radio');
   }else {
     formData[5].setAttribute("data-error-visible", false);
     formData[5].removeAttribute("data-error");
     radioValide = true;
-    //return formValid = false;
   }
   if(!checkBox1.checked) {
     checkBox1Label.setAttribute("data-error-visible" , true);
-    checkBox1Label.setAttribute("data-error", "Vous devez accepter les conditions d'utilisation.");
+    checkBox1Label.setAttribute("data-error", "Vous devez vérifier que vous acceptez les termes et conditions.");
     console.log('error input checkbox');
   }else {
     checkBox1Label.setAttribute("data-error-visible", false);
     checkBox1Label.removeAttribute("data-error");
     checkboxValide = true;
-    //return formValid = false;
   }
   if(firstValide && lastValide && mailValide && birthdateValide && quantityValide && radioValide && checkboxValide) {
     return formValid = true;
@@ -215,8 +203,14 @@ function validate(event) {
   event.preventDefault();
   checkInputsValidation();
 
-  if(formValid === true) {
+  if(formValid) {
     form.style.display = "none";
+    modalConfirmation.style.display = "flex";
+    modalConfirmation.style.justifyContent = "center";
+    modalConfirmation.style.alignItems = "center";
+    modalConfirmation.style.flexDirection = 'column';
+    modalConfirmation.style.height = "680px";
+    const btnCloseConfirmation = document.getElementById('btnCloseConfirmation');
+    btnCloseConfirmation.addEventListener('click', closeModal);
   }
-
 }

@@ -384,8 +384,6 @@ input {
 }
 
 
-
-
 /* !!!! Il n'y a pas d'input select dans le formulaire !!!! */
 /* custom select styles */
 .custom-select {
@@ -525,6 +523,18 @@ input {
 
 .hero-section > .btn-signup {
   display: none;
+}
+
+/***** Confirmation Modal *******/
+#confirmation-message {
+  display: none;
+}
+
+#confirmation-message p {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 
