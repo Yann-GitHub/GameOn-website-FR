@@ -12,7 +12,7 @@ function editNav() {
 
 // DOM Elements
 const modalbg = document.querySelector(".bground"); // Selectionne la div parent du formulaire
-const modalBody = document.getElementById('modal-body');
+const modalBody = document.getElementById('modal-body'); // Selectionne la section body de la modale
 const modalBtn = document.querySelectorAll(".modal-btn"); // Selectionne les 2 bouttons qui ouvrent la modal
 const form = document.getElementById('form'); // Selectionne le formulaire
 const formData = document.querySelectorAll(".formData"); // Selectionne les différentes sections du formulaire sous forme de NodeList
@@ -48,20 +48,20 @@ let checkboxValide = false; // Validation de l'input checkbox condition d'utilis
 
 
 // launch modal event
-// ajoute un event listener sur les 2 bouttons de la hero section (boutton visible en fonction de la résolution - media query)
+// Ajoute un event listener sur les 2 bouttons de la 'hero section' (boutton visible en fonction de la résolution - media query)
 // la fonction callback est appelée au click et permet d'afficher la modal qui change son display 'none' en display 'block'
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
 // launch modal form
-// fonction intégré en callback de l'event listener sur les bouttons avec la class '.modal-btn'
-// elle modifie le display de la modal (none -> block) ce qui la fait apparaitre
+// Fonction intégré en callback de l'event listener sur les bouttons avec la class '.modal-btn'
+// Elle modifie le display de la modal (none -> block) ce qui la fait apparaitre
 function launchModal() {
   modalbg.style.display = "block";
 }
 
 // close modal form
-// ajout d'un event listener sur la croix qui permet la fermeture de la modale
-// au click la fonction callback est appelée et permet de fermer la modal en changant son display 'block' en display 'none'.
+// Ajout d'un event listener sur la croix qui permet la fermeture de la modale
+// Au click la fonction callback est appelée et permet de fermer la modal en changant son display 'block' en display 'none'.
 modalBtnCross.addEventListener("click", closeModal);
 function closeModal() {
   modalbg.style.display = 'none';
@@ -122,7 +122,7 @@ quantity.addEventListener("input", function(event) {
 })
 
 
-// Fonction ajouté en Callback de l'eventListener du boutton d'envoi du formulaire
+// Fonction ajoutée en Callback de l'eventListener du boutton d'envoi du formulaire
 // Vérifie si l'ensemble des champs obligatoires ont été remplis et de manière correcte
 function checkInputsValidation() {
   if(regexName.test(firstName.value) === false) {
@@ -134,6 +134,7 @@ function checkInputsValidation() {
     formData[0].removeAttribute("data-error");
     firstValide = true;
   }
+
   if(regexName.test(lastName.value) === false) {
     formData[1].setAttribute("data-error-visible", true);
     formData[1].setAttribute("data-error", "Veuillez entrer 2 caractères ou plus pour le champ du nom.");
@@ -143,6 +144,7 @@ function checkInputsValidation() {
     formData[1].removeAttribute("data-error");
     lastValide = true;
   }
+
   if(regexMail.test(mail.value) === false) {
     formData[2].setAttribute("data-error-visible", true);
     formData[2].setAttribute("data-error", "Veuillez enter une adresse mail valide.");
@@ -152,6 +154,7 @@ function checkInputsValidation() {
     formData[2].removeAttribute("data-error");
     mailValide = true;
   }
+
   if(birthdate.value == "") {
     formData[3].setAttribute("data-error-visible", true);
     formData[3].setAttribute("data-error", "Vous devez entrer votre date de naissance.");
@@ -161,6 +164,7 @@ function checkInputsValidation() {
     formData[3].removeAttribute("data-error");
     birthdateValide = true;
   }
+
   if(regexQuantity.test(quantity.value) === false) {
     formData[4].setAttribute("data-error-visible", true);
     formData[4].setAttribute("data-error", "Vous devez entrer un nombre entre 0 et 99.");
@@ -170,6 +174,7 @@ function checkInputsValidation() {
     formData[4].removeAttribute("data-error");
     quantityValide = true;
   }
+
   //https://stackoverflow.com/a/51760293
   if(!(radioInputs[0].checked || radioInputs[1].checked || radioInputs[2].checked || radioInputs[3].checked || radioInputs[4].checked || radioInputs[5].checked)) {
     formData[5].setAttribute("data-error-visible", true);
@@ -180,6 +185,7 @@ function checkInputsValidation() {
     formData[5].removeAttribute("data-error");
     radioValide = true;
   }
+
   if(!checkBox1.checked) {
     checkBox1Label.setAttribute("data-error-visible" , true);
     checkBox1Label.setAttribute("data-error", "Vous devez vérifier que vous acceptez les termes et conditions.");
@@ -189,11 +195,11 @@ function checkInputsValidation() {
     checkBox1Label.removeAttribute("data-error");
     checkboxValide = true;
   }
+
   if(firstValide && lastValide && mailValide && birthdateValide && quantityValide && radioValide && checkboxValide) {
     return formValid = true;
   }
 }
-
 
 
 // Function pour l'envoi du formulaire
@@ -210,7 +216,6 @@ function validate(event) {
     modalConfirmation.style.alignItems = "center";
     modalConfirmation.style.flexDirection = 'column';
     modalConfirmation.style.height = "680px";
-    const btnCloseConfirmation = document.getElementById('btnCloseConfirmation');
-    btnCloseConfirmation.addEventListener('click', closeModal);
+    document.getElementById('btnCloseConfirmation').addEventListener('click', closeModal);
   }
 }

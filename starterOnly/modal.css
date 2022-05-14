@@ -35,12 +35,15 @@ img {
   overflow: hidden;
   margin: 3.5%;
 }
+
 .header-logo {
     float: left;
 }
+
 .main-navbar {
     float: right;
 }
+
 .topnav a {
   float: left;
   display: block;
@@ -80,7 +83,6 @@ img {
   }
 }
 
-
 /* Positionnement du menu hamburger et toggle du menu via une class injectée en JS(.responsive)  */
 @media screen and (max-width: 768px) {
   .topnav.responsive {position: relative;}
@@ -118,6 +120,7 @@ main {
   text-align: justify;
 }
 
+/* Boutton pour ouvrir la modal */
 .modal-btn {
   font-size: 145%;
   background: #fe142f;
@@ -197,11 +200,13 @@ label {
   display: inline-block;
   margin-bottom: 11px;
 }
+
 input {
   padding: 8px;
   border: 0.8px solid #ccc;
   outline: none;
 }
+
 .text-control {
   margin: 0;
   padding: 8px;
@@ -211,10 +216,11 @@ input {
   height: 48px;
 }
 
-
+/* Gestion de l'affichage du message d'erreur lorsque l'input est incorrect ou manquant */
+/* En injectant l'attribut 'data-error via le javascript */
 .formData[data-error]::after {
   content: attr(data-error);
-  font-size: 0.4em;
+  font-size: 0.5em;
   color: #e54858;
   display: block;
   margin-top: 7px;
@@ -224,6 +230,7 @@ input {
   opacity: 0;
   transition: 0.3s;
 }
+/* En complément du message d'erreur la bordure de l'input devient rouge */
 .formData[data-error-visible="true"]::after {
   opacity: 1;
 }
@@ -237,6 +244,7 @@ input {
     color: red;
 } */
 
+/* Idem mais s'affiche directement sous l'input checkbox (conditions d'utilisation) */
 #checkbox1-label[data-error]::after {
     content: attr(data-error);
     font-size: 0.6rem;
@@ -253,7 +261,6 @@ input {
 #checkbox1-label[data-error-visible="true"]::after {
   opacity: 1;
 }
-
 
 
 
@@ -369,6 +376,8 @@ input {
   transform: rotate(-45deg);
 }
 
+
+
 /* Donne du style au bouttons de la landing page et du formulaire */
 .btn-submit,
 .btn-signup {
@@ -384,7 +393,6 @@ input {
 }
 
 
-/* !!!! Il n'y a pas d'input select dans le formulaire !!!! */
 /* custom select styles */
 .custom-select {
   position: relative;
@@ -456,7 +464,6 @@ input {
   font-weight: normal;
   font-size: 16px;
 }
-/* !!!! Fin de la section input select inexistant !!!! */
 
 
 /******* Hero Section  ********/
@@ -535,6 +542,7 @@ input {
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
 

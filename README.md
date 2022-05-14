@@ -1,8 +1,8 @@
 # GameOn - Marathon national de jeux vidéos
 
 > OpenClassrooms - "Développeur d'application - JavaScript React".  
-> Créez une landing page avec Javascript.
-> [GameOn website](https://yann-github.github.io/GameOn-website-FR/starterOnly/)
+> Créez une landing page avec Javascript.  
+> [GameOn website](https://yann-github.github.io/GameOn-website-FR/starterOnly/)  
 
 ![Website Mockup](./starterOnly/HomePage.png)
 
