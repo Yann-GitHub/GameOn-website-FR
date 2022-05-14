@@ -2,12 +2,12 @@
 
 > OpenClassrooms - "Développeur d'application - JavaScript React".  
 > Créez une landing page avec Javascript.  
-\\
+\
 > Link : [GameOn website](https://yann-github.github.io/GameOn-website-FR/starterOnly/) 
-\\
+\
 
 ![Website Mockup](./starterOnly/HomePage.png)
-\\
+\
 
 ## Objectifs
 
