@@ -178,7 +178,7 @@ function checkInputsValidation() {
   //https://stackoverflow.com/a/51760293
   if(!(radioInputs[0].checked || radioInputs[1].checked || radioInputs[2].checked || radioInputs[3].checked || radioInputs[4].checked || radioInputs[5].checked)) {
     formData[5].setAttribute("data-error-visible", true);
-    formData[5].setAttribute("data-error", "Vous devez choisir une option.");
+    formData[5].setAttribute("data-error", "Vous devez choisir une ville.");
     console.log('error input radio');
   }else {
     formData[5].setAttribute("data-error-visible", false);
@@ -188,7 +188,7 @@ function checkInputsValidation() {
 
   if(!checkBox1.checked) {
     checkBox1Label.setAttribute("data-error-visible" , true);
-    checkBox1Label.setAttribute("data-error", "Vous devez vérifier que vous acceptez les termes et conditions.");
+    checkBox1Label.setAttribute("data-error", "Vous devez acceptez les termes et conditions.");
     console.log('error input checkbox');
   }else {
     checkBox1Label.setAttribute("data-error-visible", false);

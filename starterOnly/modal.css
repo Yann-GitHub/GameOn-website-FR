@@ -18,7 +18,7 @@ body {
   /*background-image: url("background.png");*/
   font-family: var(--font-default);
   font-size: 18px;
-  max-width: 1300px;
+  max-width: 1800px;
   margin: 0 auto;
 }
 
@@ -247,12 +247,12 @@ input {
 /* Idem mais s'affiche directement sous l'input checkbox (conditions d'utilisation) */
 #checkbox1-label[data-error]::after {
     content: attr(data-error);
-    font-size: 0.6rem;
+    font-size: 0.7rem;
     color: #e54858;
     display: block;
     margin-top: 7px;
     margin-bottom: 7px;
-    text-align: right;
+    text-align: left;
     line-height: 0.3;
     opacity: 0;
     transition: 0.3s;
@@ -468,7 +468,7 @@ input {
 
 /******* Hero Section  ********/
 .hero-section {
-  min-height: 93vh;
+  min-height: 75vh;
   border-radius: 10px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -484,6 +484,7 @@ input {
   position: relative;
   text-align: left;
   min-width: 424px;
+
 }
 .hero-content::after {
   content: "";
@@ -499,12 +500,12 @@ input {
   z-index: 1;
 }
 .hero-headline {
-  font-size: 6rem;
+  font-size: 5rem;
   font-weight: normal;
   white-space: nowrap;
 }
 .hero-text {
-  width: 146%;
+  width: 100%;
   font-weight: normal;
   margin-top: 57px;
   padding: 0;
